@@ -1,7 +1,10 @@
+var subredditRE = /^https?:\/\/(?:[a-z]+).reddit.com\/r\/([\w\.\+]+)\//i
+
 function unsubscribe(info)
 {
-	var url = info.hrefUrl;
-	var subreddit = 'andytuba'; // TODO: parse subreddit from url
+ 	var match = info.linkUrl.match(subredditRE);
+	var subreddit = match && match[1];
+	if (typeof subreddit === "undefined") console.log("nothing to do", info.linkUrl);
 
 	console.log("unsubscribe from " + subreddit, "given", info);
 
