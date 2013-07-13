@@ -11,6 +11,15 @@
    "background": {
       "scripts": ["background.js"]
    },
+   "content_scripts": [
+      {
+         "matches": [
+            "*://reddit.com/*",
+            "*://*.reddit.com/*"
+         ],
+         "js": [ "foreground.js" ]
+      }
+   ],
    "minimum_chrome_version": "6",
    "permissions": [ 
       "contextMenus",
