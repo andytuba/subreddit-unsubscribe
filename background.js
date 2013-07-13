@@ -10,12 +10,10 @@ function unsubscribe(info)
 chrome.contextMenus.create({
 	title: "Unsubsribe from subreddit", 
 	contexts:["link"], 
-	/*
 	targetUrlPatterns: [ 
 		"*://reddit.com/r/*",
 		"*://*.reddit.com/r/*"
 		],
-	*/
 	onclick: unsubscribe
 });
 
