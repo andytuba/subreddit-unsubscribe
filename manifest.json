@@ -1,0 +1,25 @@
+{
+
+   "manifest_version": 2,
+   "name": "Quick Subreddit Unsubscribe",
+   "description": "Right-click a link to a subreddit for a quick-unsubscribe tool.",
+   "icons": {
+      "48": "icon48.png",
+      "128": "icon128.png"
+
+   },
+   "background": {
+      "scripts": ["background.js"]
+   },
+   "minimum_chrome_version": "6",
+   "permissions": [ 
+      "contextMenus",
+      "http://reddit.com/*",
+      "https://reddit.com/*",
+      "http://*.reddit.com/*",
+      "https://*.reddit.com/*"
+   ],
+   "homepage_url": "http://github.com/andytuba/subreddit-unsubscribe",
+   "update_url": "http://clients2.google.com/service/update2/crx",
+   "version": "0.1"
+}
