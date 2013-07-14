@@ -37,24 +37,16 @@ function getSubredditId(subredditName) {
 }
 
 function unsubscribe(subredditId, subredditName) {
-	var params = {
-		'sr': subredditId,
-		'r': subredditName,
-		'action': 'unsub',
-		'uh': uh,
-		'renderstyle': 'json'
-	};
-	var items = [];
-	for (var key in params) {
-		if (!params.hasOwnProperty(key)) continue;
-		var item = key + '=' + params[key];
-		items.push(item);
-	}
-	var data = items.join('&');
+	var formData = new FormData();
+	formData.append('sr', subredditId);
+	formData.append('action', 'unsub');
+	formData.append('uh', uh);
 
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", subscribeApiEndpoint);
-	xhr.send(data)
+	xhr.open("POST", subscribeApiEndpoint, true);
+	xhr.send(formData)
+
+	console.log("Sending unsubscribe request for ", subredditName);
 
 }
 
