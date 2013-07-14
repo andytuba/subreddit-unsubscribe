@@ -1,7 +1,7 @@
 
 var uh = '';
 var subredditRE = /^https?:\/\/(?:[a-z]+).reddit.com\/r\/([\w\.\+]+)\//i
-var subscribeApiEndpoint = 'http://reddit.com/api/subscribe';
+var subscribeApiEndpoint = 'http://www.reddit.com/api/subscribe';
 
 function onclickUnsubscribe(info)
 {
@@ -29,7 +29,7 @@ function unsubscribe(subreddit) {
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", subscribeApiEndpoint);
-	xhr.send(JSON.stringify(data))
+	xhr.send(data)
 
 }
 
