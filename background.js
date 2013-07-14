@@ -11,7 +11,7 @@ function onclickUnsubscribe(info)
 	var subreddit = match && match[1];
 	if (typeof subreddit === "undefined") console.log("nothing to do", info.linkUrl);
 
-	console.log("unsubscribe from " + subreddit, "given", info);
+	console.log("Attempting to unsubscribe from " + subreddit);
 	getSubredditId(subreddit, unsubscribe)
 }
 
@@ -24,7 +24,6 @@ function getSubredditId(subredditName) {
 		if (xhr.readyState != XMLHttpRequest.DONE) return;
 
 		try {
-		debugger;
 			var data = JSON.parse(xhr.response);
 			var subredditId = data.data.name;
 			unsubscribe(subredditId, subredditName);
@@ -52,10 +51,6 @@ function unsubscribe(subredditId, subredditName) {
 
 chrome.runtime.onMessage.addListener(
   function(request, sender, sendResponse) {
-    console.log(sender.tab ?
-                "from a content script:" + sender.tab.url :
-                "from the extension",
-                request);
    	uh = request.uh;
   });
 
