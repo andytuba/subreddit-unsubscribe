@@ -4,9 +4,7 @@
    "name": "Quick Subreddit Unsubscribe",
    "description": "Right-click a link to a subreddit for a quick-unsubscribe tool.",
    "icons": {
-      "48": "icon48.png",
-      "128": "icon128.png"
-
+      "32": "icon.png",
    },
    "background": {
       "scripts": ["background.js"]
