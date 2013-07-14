@@ -3,6 +3,12 @@ subreddit-unsubscribe
 
 Chrome extension to quickly unsubscribe from a subreddit.
 
+Download
+--------
+
+https://github.com/andytuba/subreddit-unsubscribe/blob/master/subreddit-unsubscribe.crx
+
+
 Usage
 -----
 
