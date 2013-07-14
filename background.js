@@ -2,6 +2,8 @@
 var uh = '';
 var subredditRE = /^https?:\/\/(?:[a-z]+).reddit.com\/r\/([\w\.\+]+)\//i
 var subscribeApiEndpoint = 'http://www.reddit.com/api/subscribe';
+var subredditInfoPrefix = 'http://www.reddit.com/r';
+var subredditInfoSuffix = 'about.json';
 
 function onclickUnsubscribe(info)
 {
@@ -10,14 +12,37 @@ function onclickUnsubscribe(info)
 	if (typeof subreddit === "undefined") console.log("nothing to do", info.linkUrl);
 
 	console.log("unsubscribe from " + subreddit, "given", info);
-	unsubscribe(subreddit);	
+	getSubredditId(subreddit, unsubscribe)
 }
 
-function unsubscribe(subreddit) {
+function getSubredditId(subredditName) {
+	var url = [subredditInfoPrefix, subredditName, subredditInfoSuffix].join('/');
+
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	xhr.onreadystatechange = function() {
+		if (xhr.readyState != XMLHttpRequest.DONE) return;
+
+		try {
+		debugger;
+			var data = JSON.parse(xhr.response);
+			var subredditId = data.data.name;
+			unsubscribe(subredditId, subredditName);
+		} catch(e) {
+			console.log("Couldn't parse response", xhr, e);
+		}
+	};
+	xhr.send()
+
+}
+
+function unsubscribe(subredditId, subredditName) {
 	var params = {
-		'r': subreddit,
+		'sr': subredditId,
+		'r': subredditName,
 		'action': 'unsub',
 		'uh': uh,
+		'renderstyle': 'json'
 	};
 	var items = [];
 	for (var key in params) {
